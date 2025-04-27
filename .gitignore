@@ -1,4 +1,6 @@
 .vs
-ioMemory-vsl*
+*.o
+*.ko
+*.mod.c
 root/.vs
 **/license.c

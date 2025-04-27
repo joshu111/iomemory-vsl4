@@ -516,7 +516,7 @@ static void kfio_pci_disable_device(kfio_pci_dev_t *pdev)
 
 static int kfio_pci_enable_device(kfio_pci_dev_t *pdev)
 {
-    return pci_enable_device((struct pci_dev *)pdev);
+    return pci_enable_device_mem((struct pci_dev *)pdev);
 }
 
 static void kfio_pci_release_regions(kfio_pci_dev_t *pdev)
