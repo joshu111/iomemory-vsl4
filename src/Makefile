@@ -1,5 +1,6 @@
-# src/Makefile
 obj-m := iomemory-vsl4.o
+
+EXTRA_CFLAGS += -I$(PWD)/include
 
 KDIR := /lib/modules/$(KERNELRELEASE)/build
 PWD := $(shell pwd)
