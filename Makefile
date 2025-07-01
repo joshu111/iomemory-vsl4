@@ -1,5 +1,5 @@
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
+PWD := $(shell pwd)/src
 
 obj-m += iomemory-vsl4.o
 
