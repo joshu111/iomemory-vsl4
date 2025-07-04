@@ -5,6 +5,20 @@ FIO_DIR = $(shell git rev-parse --show-toplevel)
 
 all: help
 
+.PHONY: install-ko
+install-ko:
+	sudo cp root/usr/src/iomemory-vsl4-4.3.7/iomemory-vsl4.ko /lib/modules/$(shell uname -r)/kernel/drivers/misc/
+	sudo depmod -a
+	echo "iomemory-vsl4" | sudo tee /etc/modules-load.d/iomemory.conf > /dev/null
+	sudo modprobe iomemory-vsl4
+
+.PHONY: uninstall-ko
+uninstall-ko:
+	sudo modprobe -r iomemory-vsl4 || true
+	sudo rm -f /lib/modules/$(shell uname -r)/kernel/drivers/misc/iomemory-vsl4.ko
+	sudo rm -f /etc/modules-load.d/iomemory.conf
+	sudo depmod -a
+
 .PHONY: dkms
 dkms: clean
 	cd ${FIO_SRC_DIR} && \

@@ -157,6 +157,10 @@ make module
 cd root/usr/src/iomemory-vsl4-4.3.7
 sudo insmod iomemory-vsl4.ko
 ```
+There was a weird issue on my system where building from source worked fine but dkms did not, so added a script to install module.
+```
+make install-ko
+```
 
 ### .deb Ubuntu / Debian
 ```
