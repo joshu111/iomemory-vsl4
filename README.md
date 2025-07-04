@@ -63,6 +63,11 @@ iommu=pt
 Example:
 ```GRUB_CMDLINE_LINUX_DEFAULT="quiet iommu=pt"```
 
+Make sure to run after making changes to grub config
+```
+update-grub
+```
+
 ### Systemd-boot
 When using `systemd-boot` add the above options to the `options` section of the `.conf` file you're using as your loader. Typically the loader root will be `/EFI`, `/efi`, or `/boot`. Which will have a `loader/entries/` directory that contains your specific configuration files. Use your favourite editor. More information on `systemd-boot` can be found [here](https://wiki.archlinux.org/title/systemd-boot#Adding_loaders).
 
@@ -116,6 +121,13 @@ DKMS is recommended, but installation can also be done with packages or from sou
 Dynamic Kernel Module Support automates away the requirement of having to
 repackage the kernel module with every kernel and headers update that takes
 place on the system.
+
+Prerequisites
+```
+apt-get install git sudo build-essential
+apt-get install gcc fakeroot build-essential debhelper linux-headers-$(uname --r) rsync
+apt-get install gcc rsync
+apt-get install dkms
 
 Try building from `main` first as it works with most modern kernels up to about 5.14:
 
